@@ -1,0 +1,408 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap");
+
+body {
+  font-family: "Source Code Pro", monospace; /* Define a fonte padrão */
+  background-color: rgba(221, 221, 221, 1); /* Cor de fundo da página */
+  display: flex; /* Usa Flexbox para layout */
+  flex-direction: column; /* Alinha os itens na vertical */
+  align-items: center; /* Centraliza os itens horizontalmente */
+  justify-content: flex-start; /* Centraliza os itens verticalmente */
+  height: 100vh; /* Preenche a altura total da viewport */
+  margin: 0; /* Remove a margem padrão */
+  padding: 0; /* Remove o padding padrão */
+  position: relative; /* Necessário para o pseudo-elemento funcionar corretamente */
+  overflow: hidden;
+  background: #25262d;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("images/background.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; /* Reduz a opacidade da imagem de fundo */
+  z-index: -1; /* Coloca o pseudo-elemento atrás do conteúdo */
+}
+
+#texto {
+  opacity: 0;
+  color: #fff;
+  transition: opacity 0.5s ease-in-out;
+  text-align: center;
+}
+
+video {
+  width: 100%;
+  min-height: 100px;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+/* Estiliza os títulos h1 */
+h1 {
+  font-family: "Source Code Pro", monospace;
+  font-size: 1.5rem; /* Aumenta o tamanho da fonte */
+  color: #fff; /* Cor do texto */
+  text-align: center; /* Alinha o texto ao centro */
+  letter-spacing: 0.4rem; /* Espaçamento entre letras */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra ao texto */
+  margin-bottom: 2rem; /* Espaçamento abaixo do título */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  max-width: 35rem;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+h1:hover {
+  color: #1b2f4b; /* Muda a cor do texto ao passar o mouse */
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4); /* Aumenta a sombra do texto */
+}
+
+/* Estiliza as seções da página */
+.pesquisa {
+  display: flex; /* Usa Flexbox para layout */
+  flex-direction: column; /* Alinha os itens na vertical */
+  align-items: center; /* Centraliza os itens horizontalmente */
+  margin-bottom: 3rem; /* Espaçamento abaixo de cada seção */
+  padding: 2rem; /* Espaçamento interno da caixa */
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Adiciona uma borda sutil */
+  border-radius: 1rem; /* Borda arredondada */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+  max-width: 35rem; /* Define a largura máxima da caixa */
+  margin: auto; /* Centraliza a caixa horizontalmente na página */
+  transition: box-shadow 0.3s ease, border 0.3s ease, backdrop-filter 0.6s ease; /* Adiciona transição para backdrop-filter */
+  -webkit-transition: box-shadow 0.3s ease, border 0.3s ease,
+    -webkit-backdrop-filter 0.6s ease; /* Suporte para navegadores WebKit */
+  background: #25262db8;
+  box-sizing: border-box;
+  padding-bottom: 4rem;
+}
+
+.pesquisa:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
+  border: 1px solid rgba(0, 0, 0, 0.4); /* Escurece a borda ao passar o mouse */
+  backdrop-filter: blur(2px); /* Aplica o efeito de desfoque no fundo */
+  -webkit-backdrop-filter: blur(8px); /* Suporte para navegadores WebKit */
+}
+/* Estiliza os inputs dentro das seções */
+.pesquisa input {
+  width: 30rem; /* Largura dos inputs */
+  border: none; /* Remove a borda padrão */
+  padding: 1rem; /* Espaçamento interno */
+  border-radius: 1.5rem; /* Borda arredondada */
+  margin-bottom: 1rem; /* Espaçamento abaixo dos inputs */
+  color: #45474b; /* Cor do texto */
+  font-size: 1rem; /* Tamanho da fonte */
+  box-sizing: border-box; /* Inclui padding e border na largura total */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+  transition: box-shadow 0.3s ease; /* Transição suave na sombra */
+}
+
+.pesquisa input:focus {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra mais intensa ao focar */
+  outline: none; /* Remove o outline padrão */
+}
+
+.botoes {
+  display: flex;
+  flex-direction: row;
+  gap: 3vh;
+}
+
+/* Estiliza os botões dentro das seções */
+.pesquisa button {
+  padding: 0.8rem 1.2rem; /* Espaçamento interno do botão */
+  border: none; /* Remove a borda padrão */
+  border-radius: 1.5rem; /* Borda arredondada */
+  background-color: #30475e; /* Cor de fundo do botão */
+  color: #f5f7f8; /* Cor do texto do botão */
+  font-size: 1rem; /* Tamanho da fonte */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transições suaves */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra inicial */
+}
+
+/* Adiciona efeito hover ao botão de pesquisa */
+.pesquisa button:hover {
+  background-color: #3b5970; /* Muda a cor de fundo ao passar o mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra mais intensa */
+}
+
+/* Estiliza a caixa de resultados da pesquisa */
+.resultados-pesquisa {
+  max-width: 60rem; /* Largura máxima da caixa de resultados */
+  height: 40vh; /* Altura máxima da caixa de resultados */
+
+  margin-top: 1rem; /* Espaçamento acima da caixa de resultados */
+  padding: 1rem; /* Espaçamento interno */
+  border-radius: 0.6rem; /* Borda arredondada */
+  overflow-x: hidden; /* Oculta a rolagem horizontal */
+}
+
+/* Estiliza a barra de rolagem */
+.resultados-pesquisa::-webkit-scrollbar {
+  width: 12px; /* Largura da scrollbar */
+}
+
+/* Estiliza a parte interna da barra de rolagem */
+.resultados-pesquisa::-webkit-scrollbar-track {
+  background: rgba(241, 241, 241, 0.5); /* Cor de fundo da track (trilho) */
+  border-radius: 0.6rem; /* Borda arredondada */
+}
+
+/* Estiliza o thumb (indicador de rolagem) */
+.resultados-pesquisa::-webkit-scrollbar-thumb {
+  background-color: #888; /* Cor do thumb */
+  border-radius: 6px; /* Borda arredondada */
+  border: 3px solid rgba(241, 241, 241, 0.5); /* Borda ao redor do thumb para dar espaço */
+}
+
+/* Estiliza o thumb ao passar o mouse */
+.resultados-pesquisa::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Cor do thumb ao passar o mouse */
+}
+
+@keyframes slide-in-smooth {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+    filter: blur(10px); /* Desfoque inicial */
+  }
+  60% {
+    transform: translateY(10%);
+    opacity: 0.7;
+    filter: blur(3px); /* Reduz o desfoque */
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0); /* Remove o desfoque completamente */
+  }
+}
+
+/* Estiliza cada item de resultado */
+.item-resultado {
+  display: flex;
+  justify-content: space-between; /* Espaça o texto e a imagem */
+  align-items: center; /* Alinha verticalmente o conteúdo */
+  margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
+  padding: 1rem; /* Espaçamento interno */
+  background: rgba(255, 255, 255, 0.5); /* Cor de fundo dos itens */
+  border-radius: 0.6rem; /* Borda arredondada */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+  animation: slide-in-smooth 1s cubic-bezier(0.33, 1, 0.68, 1) forwards; /* Transição suave */
+  opacity: 0; /* Garante que comece invisível */
+  transform: translateX(-50%); /* Posição inicial fora da tela */
+}
+
+.item-resultado:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
+}
+
+/* Estiliza os títulos dentro dos itens de resultado */
+.item-resultado h2 {
+  font-size: 1.5rem; /* Tamanho da fonte */
+  color: #1c2738; /* Cor do texto */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.item-resultado h2:hover {
+  color: #1b2f4b; /* Muda a cor do texto ao passar o mouse */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Aumenta a sombra do texto */
+}
+
+/* Estiliza os links dentro dos itens de resultado */
+.item-resultado a {
+  text-decoration: none; /* Remove o sublinhado padrão dos links */
+  color: #fff; /* Cor do texto dos links */
+  transition: text-decoration 0.5s ease-in-out;
+  font-weight: bold;
+  background-color: #fff;
+  animation: colorChange 3s infinite alternate;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: #b82525;
+  }
+  50% {
+    background-color: #25262d;
+  }
+  100% {
+    background-color: #949209;
+  }
+}
+
+/* Estiliza os links quando são passados o mouse sobre */
+.item-resultado a:hover {
+  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+/* Estiliza a descrição meta dentro dos itens de resultado */
+.descricao-meta {
+  color: #45474b; /* Cor do texto */
+  margin: 0.5rem 0; /* Margem acima e abaixo */
+}
+.texto-item {
+  flex: 2.5; /* O texto ocupa 3 partes do espaço disponível */
+  padding-right: 1rem; /* Espaçamento à direita do texto */
+}
+
+.imagem-item {
+  flex: 1; /* A imagem ocupa 1 parte do espaço disponível */
+  max-width: 150px; /* Limita a largura máxima da imagem */
+}
+
+.imagem-item img:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
+}
+
+.imagem-item img {
+  width: 100%; /* A imagem ocupa toda a largura do container */
+  border-radius: 0.6rem; /* Borda arredondada da imagem */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+footer {
+  color: #000; /* Cor do texto */
+  text-align: center; /* Alinha o texto ao centro */
+  padding: 0; /* Espaçamento interno */
+  width: 100%; /* Largura total da página */
+  position: absolute; /* Posiciona o rodapé */
+  bottom: 0; /* Alinha ao fundo da página */
+  font-size: 1rem; /* Tamanho da fonte */
+  border-radius: 8px 8px 0 0;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+  backdrop-filter: blur(2px); /* Aplica o efeito de desfoque no fundo */
+  -webkit-backdrop-filter: blur(8px); /* Suporte para navegadores WebKit */
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #b1dbdb; /* Cor de fundo do rodapé */
+  opacity: 0.5; /* Reduz a opacidade da imagem de fundo */
+  filter: blur(8px); /* Adiciona o efeito de desfoque */
+  z-index: -1;
+}
+
+footer:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Aumenta a sombra ao passar o mouse */
+  border: 1px 0 0 0 solid rgba(0, 0, 0, 0.4); /* Escurece a borda ao passar o mouse */
+}
+.popup {
+  display: none; /* Escondido por padrão */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+  opacity: 0;
+  transition: opacity 0.5s ease; /* Transição suave para o popup aparecer */
+  z-index: 10;
+}
+
+.popup.show {
+  display: block; /* Exibe o popup */
+  opacity: 1; /* Aumenta a opacidade de forma suave */
+}
+
+.popup-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 8px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem; /* Tamanho da fonte em telas menores */
+    letter-spacing: 0.2rem; /* Espaçamento entre letras em telas menores */
+  }
+
+  .pesquisa input {
+    width: 25rem; /* Largura dos inputs em telas menores */
+    padding: 0.8rem; /* Espaçamento interno em telas menores */
+  }
+
+  .resultados-pesquisa {
+    width: 28rem; /* Largura da caixa de resultados em telas menores */
+    height: 40vh; /* Altura da caixa de resultados em telas menores */
+  }
+
+  .item-resultado {
+    flex-flow: column-reverse;
+  }
+
+  .resultados-pesquisa h2 {
+    text-align: center;
+  }
+
+  .item-resultado h2 {
+    font-size: 1.3rem; /* Tamanho da fonte dos títulos em telas menores */
+    text-align: center;
+  }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem; /* Tamanho da fonte em telas pequenas */
+    letter-spacing: 0.1rem; /* Espaçamento entre letras em telas pequenas */
+  }
+
+  .pesquisa input {
+    width: 17rem; /* Largura total dos inputs em telas pequenas */
+  }
+
+  .pesquisa button {
+    padding: 0.6rem 1rem; /* Espaçamento interno do botão em telas pequenas */
+    font-size: 0.9rem; /* Tamanho da fonte do botão em telas pequenas */
+  }
+
+  .resultados-pesquisa {
+    width: 90%; /* Largura da caixa de resultados em telas pequenas */
+    height: 35vh; /* Altura da caixa de resultados em telas pequenas */
+  }
+
+  .item-resultado h2 {
+    font-size: 1.1rem; /* Tamanho da fonte dos títulos em telas pequenas */
+  }
+
+  footer {
+    font-size: 0.9rem; /* Tamanho da fonte do rodapé em telas pequenas */
+  }
+}
